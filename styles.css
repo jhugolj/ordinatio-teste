@@ -64,3 +64,9 @@ tr:nth-child(even) {
 .bold {
     font-weight: bold;
 }
+
+.small-text {
+    font-size:smaller;
+    align-content: center;
+    padding-top: 5px;
+}
