@@ -66,7 +66,8 @@ function generateDownloadLink(results) {
     const blob = new Blob([csvContent], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
 
-    const downloadLink = document.getElementById('downloadResultsLink');
+    cconst downloadLink = document.getElementById('downloadResultsLink');
     downloadLink.href = url;
+    downloadLink.download = 'Ordinathio-Results.csv'; // Define o nome do arquivo aqui
     downloadLink.style.display = 'inline-block';
 }
