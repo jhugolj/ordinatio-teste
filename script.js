@@ -26,7 +26,7 @@ function calculateRanking(data) {
     const alpha = parseFloat(document.getElementById('alpha').value);
     
     return data.slice(1).map(row => {
-        const [journalName, issn, authorsName, articleName, impactFactor, year, citations] = row;
+        const [articleName, authorsName, journalName, issn, impactFactor, year, citations] = row;
         const fi = parseFloat(impactFactor);
         const ap = parseInt(year);
         const nc = parseInt(citations);
@@ -69,3 +69,6 @@ function generateDownloadLink(results) {
     downloadLink.download = 'Ordinathio-Results.csv'; // Define o nome do arquivo aqui
     downloadLink.style.display = 'inline-block';
 }
+document.getElementById('alpha').addEventListener('input', function() {
+    this.value = parseFloat(this.value).toFixed(2);
+});
