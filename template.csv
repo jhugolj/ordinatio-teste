@@ -1,4 +1,4 @@
-Journals Name,ISSN,Authors Name,Article Name,Impact Factor,Year of Publication,Number of Citations
-Journal com nome bem grande para teste,1234-5678,Author A,Example Article 1,2.5,2015,50
-Journal 2,2345-6789,Author B,Example Article 2,3.0,2017,30
-Journal 3,3456-7890,Author C,Example Article 3,3.7,2023,200
+Article Name,Authors Name,Journals Name,ISSN,Impact Factor,Year of Publication,Number of Citations
+Example Article 1,Author A,Journal com nome bem grande para teste,1234-5678,2.5,2015,50
+Example Article 2,Author B,Journal 2,2345-6789,3.0,2017,30
+Example Article III,Author C,Journal 3,3456-7890,3.7,2023,200
