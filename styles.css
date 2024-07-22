@@ -17,9 +17,6 @@ h1 {
     text-align: center;
     color: #007BFF;
 }
-p {
-    text-align: justify;
-}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -39,7 +36,7 @@ th {
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-.download-link, button, file {
+.download-link, button {
     margin: 10px 0;
     display: inline-block;
     padding: 10px 15px;
@@ -68,8 +65,14 @@ tr:nth-child(even) {
     font-weight: bold;
 }
 
+p {
+    text-align: justify;
+    font-size: small;
+}
 .small-text {
     font-size:smaller;
+    text-align: justify;
     align-content: center;
     padding-top: 5px;
+    margin-right:10px;
 }
