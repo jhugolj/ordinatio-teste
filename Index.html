@@ -9,19 +9,14 @@
 <body>
     <div class="container">
         <h1>Methodi Ordinatio Ranking</h1>
+
+        <div class="container"><p>Esta metodologia¹ de revisão sistemática da literatura é baseada em três fatores para seleção de publicações e do InOrdinatio,
+             que é um índice para classificar por relevância os trabalhos selecionados. Este índice cruza os três principais fatores em avaliação em um artigo: fator de impacto, ano de publicação e número de citações. Ao aplicar a equação, 
+            os pesquisadores identificam entre os trabalhos selecionados os mais relevantes para compor seu portfólio bibliográfico.</p></div>
         <a href="template.csv" class="download-link" download="template.csv">Download Template</a>
-        <p class="small-text">This template has 3 example documents. Delete them to insert data from their respective documents.</p>
-        <div class="input-group">
-            <label for="gamma"><strong>Gamma (γ):</strong> </label>
-            <input type="number" id="gamma" value="1" min="0" max="1" step="0.05">
-        </div>
-        <div class="input-group">
-            <label for="alpha"><strong>Alpha (α):</strong> </label>
+                <div class="input-group">
+            <label for="alpha">Alpha (α): </label>
             <input type="number" id="alpha" value="1" min="0" max="1" step="0.05">
-        </div>
-        <div class="input-group">
-            <label for="beta"><strong>Beta (β): </strong> </label>
-            <input type="number" id="beta" value="1" min="0" max="1" step="0.05">
         </div>
         <input type="file" id="csvFileInput" accept=".csv" />
         <button onclick="processCSV()">Process CSV</button>
@@ -29,10 +24,10 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Journals Name</th>
-                    <th>ISSN</th>
-                    <th>Authors Name</th>
                     <th>Article Name</th>
+                    <th>Authors Name</th>
+                    <th>Journals Name</th>
+                    <th>ISSN</th>               
                     <th>Impact Factor</th>
                     <th>Year of Publication</th>
                     <th>Number of Citations</th>
@@ -43,6 +38,9 @@
         </table>
         <a id="downloadResultsLink" class="download-link" style="display:none;" download="results.csv">Download Results</a>
     </div>
+    <hr>
+    <p>¹Pagani, R.N., Kovaleski, J.L. & Resende, L.M. Methodi Ordinatio: a proposed methodology to select and rank relevant scientific papers encompassing the impact factor, number of citation, and year of publication. Scientometrics 105, 2109–2135 (2015). https://doi.org/10.1007/s11192-015-1744-x </p>
+    <p>The application web is developed by Leite Junior, J. H</p>
     <script src="script.js"></script>
 </body>
 </html>
