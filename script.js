@@ -23,18 +23,16 @@ function csvToArray(text) {
 }
 
 function calculateRanking(data) {
-    const gamma = parseFloat(document.getElementById('gamma').value);
     const alpha = parseFloat(document.getElementById('alpha').value);
-    const beta = parseFloat(document.getElementById('beta').value);
-
+    
     return data.slice(1).map(row => {
         const [journalName, issn, authorsName, articleName, impactFactor, year, citations] = row;
         const fi = parseFloat(impactFactor);
         const ap = parseInt(year);
         const nc = parseInt(citations);
 
-        const rankingIndex = (fi / gamma) + (alpha * (10 - ((new Date().getFullYear()) - ap))) + (beta * nc);
-        return [journalName, issn, authorsName, articleName, fi, ap, nc, rankingIndex.toFixed(2)];
+        const rankingIndex = (fi / 1000) + (alpha * (10 - ((new Date().getFullYear()) - ap))) + (nc);
+        return [articleName, authorsName, journalName, issn, fi, ap, nc, rankingIndex.toFixed(2)];
     }).sort((a, b) => b[7] - a[7]);
 }
 
@@ -61,7 +59,7 @@ function displayResults(results) {
 }
 
 function generateDownloadLink(results) {
-    const csvContent = 'Journals Name,ISSN,Authors Name,Article Name,Impact Factor,Year of Publication,Number of Citations,Ranking Index\n' +
+    const csvContent = 'Article Name,Authors Name,Journals Name,ISSN,Impact Factor,Year of Publication,Number of Citations,Ranking Index\n' +
         results.map(row => row.join(',')).join('\n');
     const blob = new Blob([csvContent], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
