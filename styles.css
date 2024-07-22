@@ -17,6 +17,9 @@ h1 {
     text-align: center;
     color: #007BFF;
 }
+h4 {text-align: center;
+    color: #007BFF;
+}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -68,6 +71,8 @@ tr:nth-child(even) {
 p {
     text-align: justify;
     font-size: small;
+    margin-bottom: 2px;
+    margin-top: 0px;
 }
 .small-text {
     font-size:smaller;
@@ -75,4 +80,17 @@ p {
     align-content: center;
     padding-top: 5px;
     margin-right:10px;
+}
+
+
+.input-container {
+    border: 1px solid #c4c2c2;
+    padding: 10px;
+    border-radius: 5px; 
+    display: inline-flex;
+    align-items: center;
+}
+
+input[type="file"] {
+    margin-right: 20px;
 }
