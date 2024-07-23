@@ -11,7 +11,7 @@ body {
     background: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 25px rgba(0, 4, 255, 0.1);
 }
 h1 {
     text-align: center;
@@ -46,9 +46,10 @@ tr:nth-child(even) {
     background-color: #007BFF;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
+    box-align: center;
 }
 .download-link:hover, button:hover {
     background-color: #0056b3;
@@ -106,3 +107,8 @@ input[type="file"] {
     text-align: center;
     box-align: center;
     }
+.equation-content {
+    padding: 10px;
+    margin-left: 26%;
+    text-align:left;
+}
