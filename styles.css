@@ -5,7 +5,6 @@ body {
     margin: 0;
     padding: 20px;
 }
-
 .container {
     max-width: 900px;
     margin: auto;
@@ -85,13 +84,25 @@ p {
 
 
 .input-container {
-    border: 1px solid #c4c2c2;
+    margin-left: 26%;
+    border: 1px solid #a0a0a0;
     padding: 10px;
-    border-radius: 5px; 
+    border-radius: 10px; 
     display: inline-flex;
     align-items: center;
+    justify-content: center;
 }
 
 input[type="file"] {
     margin-right: 20px;
 }
+
+.center-content {
+    text-align: center;
+}
+
+.equation {
+    font-size:smaller;
+    text-align: center;
+    box-align: center;
+    }
