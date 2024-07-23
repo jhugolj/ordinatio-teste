@@ -1,74 +1,111 @@
-function processCSV() {
-    const fileInput = document.getElementById('csvFileInput').files[0];
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-        const text = e.target.result;
-        const data = csvToArray(text);
-        if (data.length > 0) {
-            const results = calculateRanking(data);
-            displayResults(results);
-            generateDownloadLink(results);
-        } else {
-            alert('Erro ao processar o CSV. Verifique o formato do arquivo.');
-        }
-    };
-
-    reader.readAsText(fileInput);
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
 }
 
-function csvToArray(text) {
-    const rows = text.trim().split('\n');
-    return rows.map(row => row.split(',').map(cell => cell.trim()));
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-function calculateRanking(data) {
-    const alpha = parseFloat(document.getElementById('alpha').value);
-    
-    return data.slice(1).map(row => {
-        const [articleName, authorsName, journalName, issn, impactFactor, year, citations] = row;
-        const fi = parseFloat(impactFactor);
-        const ap = parseInt(year);
-        const nc = parseInt(citations);
-
-        const rankingIndex = (fi / 1000) + (alpha * (10 - ((new Date().getFullYear()) - ap))) + (nc);
-        return [articleName, authorsName, journalName, issn, fi, ap, nc, rankingIndex.toFixed(2)];
-    }).sort((a, b) => b[7] - a[7]);
+h1 {
+    text-align: center;
+    color: #007BFF;
 }
 
-function displayResults(results) {
-    const tbody = document.querySelector('#resultsTable tbody');
-    tbody.innerHTML = '';
-
-    results.forEach((row, index) => {
-        const tr = document.createElement('tr');
-        const indexCell = document.createElement('td');
-        indexCell.textContent = index + 1;
-        tr.appendChild(indexCell);
-
-        row.forEach((cell, cellIndex) => {
-            const td = document.createElement('td');
-            td.textContent = cell;
-            if (cellIndex === 7) { // Ranking Index column
-                td.classList.add('bold');
-            }
-            tr.appendChild(td);
-        });
-        tbody.appendChild(tr);
-    });
+h4 {text-align: center;
+    color: #007BFF;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #007BFF;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.download-link, button {
+    margin: 10px 0;
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.download-link:hover, button:hover {
+    background-color: #0056b3;
+}
+.input-group {
+    margin: 10px 0;
+}
+.input-group label {
+    margin-right: 10px;
+}
+.input-group input {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.bold {
+    font-weight: bold;
 }
 
-function generateDownloadLink(results) {
-    const csvContent = 'Article Name,Authors Name,Journals Name,ISSN,Impact Factor,Year of Publication,Number of Citations,Ranking Index\n' +
-        results.map(row => row.join(',')).join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-
-    const downloadLink = document.getElementById('downloadResultsLink');
-    downloadLink.href = url;
-    downloadLink.download = 'Ordinathio-Results.csv'; // Define o nome do arquivo aqui
-    downloadLink.style.display = 'inline-block';
+p {
+    text-align: justify;
+    font-size: small;
+    margin-bottom: 2px;
+    margin-top: 0px;
 }
-document.getElementById('alpha').addEventListener('input', function() {
-    this.value = parseFloat(this.value).toFixed(2);
-});
+.small-text {
+    font-size:smaller;
+    text-align: justify;
+    align-content: center;
+    padding-top: 5px;
+    margin-right:10px;
+}
+
+
+.input-container {
+    margin-left: 26%;
+    border: 1px solid #a0a0a0;
+    padding: 10px;
+    border-radius: 10px; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="file"] {
+    margin-right: 20px;
+}
+
+.center-content {
+    text-align: center;
+}
+
+.equation {
+    font-size:smaller;
+    text-align: center;
+    box-align: center;
+    }
