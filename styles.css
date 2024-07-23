@@ -103,12 +103,14 @@ input[type="file"] {
 }
 
 .equation {
+    padding-bottom: 1px;
     font-size:smaller;
     text-align: center;
     box-align: center;
     }
 .equation-content {
     padding: 10px;
+    font-size:smaller;
     margin-left: 26%;
     text-align:left;
 }
