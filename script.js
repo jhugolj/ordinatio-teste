@@ -18,8 +18,13 @@ function processCSV() {
 }
 
 function csvToArray(text) {
+    // Usa regex para separar os campos corretamente considerando aspas.
     const rows = text.trim().split('\n');
-    return rows.map(row => row.split(',').map(cell => cell.trim()));
+    return rows.map(row => {
+        const regex = /(".*?"|[^",\s]+)(?=\s*,|\s*$)/g;
+        const matches = [...row.matchAll(regex)];
+        return matches.map(match => match[0].replace(/^"|"$/g, '').trim());
+    });
 }
 
 function calculateRanking(data) {
@@ -60,7 +65,9 @@ function displayResults(results) {
 
 function generateDownloadLink(results) {
     const csvContent = 'Article Name,Authors Name,Journals Name,ISSN,Impact Factor,Year of Publication,Number of Citations,Ranking Index\n' +
-        results.map(row => row.join(',')).join('\n');
+        results.map(row => 
+            row.map(cell => `"${cell}"`).join(',') // Adiciona aspas aos campos para preservar vírgulas no CSV
+        ).join('\n');
     const blob = new Blob([csvContent], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
 
